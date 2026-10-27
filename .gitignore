@@ -11,3 +11,7 @@ _*.docx
 _gen_assets.py
 .DS_Store
 Thumbs.db
+.token
+.env
+*.token
+_token*
