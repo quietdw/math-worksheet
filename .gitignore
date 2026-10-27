@@ -1,0 +1,13 @@
+*.bak
+_test_*
+_cmp*
+_en_*
+_zh_*
+_panel_*
+_*.pdf
+_*.png
+_*.html
+_*.docx
+_gen_assets.py
+.DS_Store
+Thumbs.db

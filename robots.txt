@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://quietdw.github.io/math-worksheet/sitemap.xml
