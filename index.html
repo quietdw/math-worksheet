@@ -150,6 +150,7 @@
   }
   .sheet-title{
     pointer-events:auto;
+    min-width:0;
     padding:3px 10px 4px;
     background:rgba(255,255,255,.94);
     border:1px solid var(--line);
@@ -162,6 +163,9 @@
     font-weight:600;
     line-height:1.4;
     color:var(--text);
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
   }
   .sheet-title p{
     margin:1px 0 0;
@@ -169,6 +173,7 @@
     line-height:1.4;
     color:var(--muted);
   }
+  .zoom-inner{flex:0 0 auto}
   .zoom-inner{
     display:flex;
     align-items:center;
@@ -481,6 +486,20 @@
     .preview{max-height:70vh;order:2}
     .panel{order:1}
     .paper-wrap{justify-content:flex-start}
+    .panel-scroll,.panel-foot{width:100%;max-width:720px;margin-left:auto;margin-right:auto}
+  }
+
+  @media (max-width:720px){
+    .sheet-title p{display:none}
+    .sheet-title h1{font-size:12px}
+    .zoom-btn.wide{padding:0 6px;font-size:11.5px}
+    .hint{display:none}
+    .field,.prow{padding:5px 0}
+    .chip{font-size:11.5px;padding:3px 7px}
+    .chip.mini{font-size:10.5px;padding:2px 5px}
+    input[type=number]{padding:3px 6px;font-size:12px}
+    .panel-head{padding:8px 12px}
+    .panel-foot{padding:8px 12px}
   }
 
   /* 矮屏：进一步压缩，保证右侧面板一屏可见 */
