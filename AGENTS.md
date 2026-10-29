@@ -8,7 +8,7 @@
 
 - 无构建步骤、无打包器、无框架、无 `package.json`。
 - 页面：`index.html`（学科入口）、`math-practice-generator.html`（数学，单文件应用）、`chinese-practice-generator.html`、`english-practice-generator.html`（占位）、`404.html`。
-- 共用：`assets/site-shell.js`（页头 / 页尾，jQuery）、`assets/site.css`（设计变量与外壳样式）。
+- 共用：`assets/site-shell.js`（页头 / 页尾，jQuery）、`assets/site.css`（设计变量与外壳样式）、`assets/worksheet.css`（练习页布局骨架：预览 + 参数面板、缩放条、窄屏堆叠、打印）。
 - 部署：GitHub Pages 直接发布仓库根目录，`.nojekyll` 关闭 Jekyll。
 
 ## 开始工作前
@@ -27,7 +27,7 @@
 ## 代码硬约束
 
 - 不引入构建工具、npm 包、本地 `vendor/` 副本；jQuery 走 CDN（带 SRI）。
-- 学科页保持单文件（HTML + CSS + JS 内联），学科页命名 `<subject>-practice-generator.html`。
+- 学科页命名 `<subject>-practice-generator.html`。数学页保持单文件；语文页已拆成 `assets/cn/` 下多个普通 `<script>` 模块，按页面里的加载顺序执行，不使用 ES module / import，保证零构建与 `file://` 可用。新增学科若需要拆分，同样放 `assets/<subject>/`。
 - DOM 查询、文本刷新、属性 / class 切换、节点创建、事件绑定统一用 jQuery；出题引擎保持纯函数，不碰 DOM。
 - 全站脚本里保留原生 API 的只有：CSS 自定义属性写入（`el.style.setProperty`）、`MediaQueryList` / `ResizeObserver`、`CustomEvent` 派发、`canvas` 2D 测量、`localStorage`、`URL.createObjectURL`。
 - 源码中禁止出现连续的 `</body>`、`</script>` 字面量（拼字符串时用 `'</bo' + 'dy>'`），否则自动注入类服务器会提前闭合脚本。
@@ -45,7 +45,8 @@
 - 页头导航 `aria-current` 正确，语文 / 英语带「建设中 / Soon」标记。
 - 深浅色切换、中英文切换在四个页面都生效，刷新后偏好保留。
 - 数学页：出题、规则组合、答案卷、打印预览、导出 Word / PDF / 网页各走一遍。
-- 占位页保持 `noindex,follow` 且不在 `sitemap.xml` 中；首页与数学页在 sitemap 中。
+- 语文页：`?selftest=1` 自检全 0（重复 / 答案异常），星级分布与题型分布符合配置；改配置、切语言、开关答案卷、打印预览各走一遍。
+- 占位页保持 `noindex,follow` 且不在 `sitemap.xml` 中；首页、数学页、语文页在 sitemap 中。
 - 改动涉及样式时检查 ≥900px 三列、窄屏单列，以及深色主题。
 
 ## 提交规范
@@ -66,4 +67,6 @@ chore: ignore local token files
 - Live Server 类自动注入脚本会把字符串里的 `</body>` 当成真实闭合标签 → 数学页脚本被截断。
 - 数学页有自己的 `data-i18n` 体系，外壳用 `data-shell`，两套混用会互相覆盖文案。
 - 主题偏好键 `mathgen.lang.v1` / `mathgen.theme.v1` 是全站共用，改名会导致老用户偏好丢失。
+- 语文参数面板的 chip 键分四类（`NUM_MULTI` / `TEXT_MULTI` / `BOOL_KEYS` / `TEXT_KEYS` / `NUM_KEYS`，见 `assets/cn/app.js`），新增键必须先在对应表里声明：漏声明或用 `Number()` 解析 `true` / `even` 这类值会得到 `NaN`，表现为「chip 点了没反应」。`?selftest=1` 的「面板键类型声明」一行会拦这类问题。
+- 语文题库每行只能写一个字，词语里出现的字必须已在表中，否则该词会被丢弃（`?selftest=1` 会给出丢弃词数）。
 - 文件名里的 `<subject>` 与 `data-page` 取值（`home|math|chinese|english`）必须对得上，否则导航高亮和「建设中」标记失效。

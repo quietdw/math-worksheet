@@ -23,6 +23,8 @@
 | 4 | 2026-10-29 | 语文 / 英语占位页 | [spec/2026-10-29-语文英语占位页.md](./spec/2026-10-29-语文英语占位页.md) | `chinese-practice-generator.html`、`english-practice-generator.html` | 已实现（占位） |
 | 5 | 2026-10-29 | 通用外壳（页头 / 页尾） | [spec/2026-10-29-通用外壳契约.md](./spec/2026-10-29-通用外壳契约.md) | `assets/site-shell.js`、`assets/site.css` | 已实现 |
 | 6 | 2026-10-29 | 共用规范与依赖降级 | [spec/2026-10-29-共用规范与依赖降级.md](./spec/2026-10-29-共用规范与依赖降级.md) | `assets/site.css`、`sitemap.xml`、`robots.txt` | 已实现 |
+| 7 | 2026-10-29 | 语文练习页（按难度出题） | [spec/2026-10-29-语文练习页.md](./spec/2026-10-29-语文练习页.md) | `chinese-practice-generator.html`、`assets/cn/*` | 已实现（P1） |
+| 8 | 2026-10-29 | 练习页通用布局 | [spec/2026-10-29-练习页通用布局.md](./spec/2026-10-29-练习页通用布局.md) | `assets/worksheet.css`、`math-practice-generator.html`、`chinese-practice-generator.html`、`assets/cn/cn.css` | 已实现 |
 
 ## 3. 阅读顺序
 
