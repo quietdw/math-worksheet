@@ -227,7 +227,7 @@
     $('#site-footer').html(FOOTER_HTML);
 
     // 未开放学科在导航里挂「建设中」标记，避免用户以为能直接做题
-    var pendingMap = { chinese: 1, english: 1 };
+    var pendingMap = { english: 1 };
     $('.site-nav a[data-page]').each(function () {
       var link = $(this);
       if (!pendingMap[link.attr('data-page')]) return;

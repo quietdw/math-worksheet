@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>小学练习题生成器 - 数学、语文、英语练习卷在线生成，可导出 Word / PDF</title>
-<meta name="description" content="小学练习卷在线生成：数学口算已上线，支持加减乘除、混合运算、整数与小数、负数限制、自定义题量与 A4 排版，一键导出 Word、PDF 或网页；语文与英语练习题型正在建设中。">
+<meta name="description" content="小学练习卷在线生成：数学口算与语文按难度出题均已上线，支持加减乘除、混合运算、整数与小数、负数限制、看拼音写词语、生字注音、同音字与组词，自定义题量、A4 排版，一键导出 Word、PDF 或网页；英语题型正在建设中。">
 <meta name="keywords" content="小学练习题生成器,小学练习卷,计算题生成器,口算题生成器,数学练习题,语文练习卷,英语练习卷,加减乘除,混合运算,打印练习卷,worksheet generator,primary school worksheet">
 <meta name="author" content="quietdw">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
@@ -16,7 +16,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="小学练习题生成器">
 <meta property="og:title" content="小学练习题生成器 - 数学、语文、英语练习卷在线生成">
-<meta property="og:description" content="数学口算练习卷已上线，语文与英语建设中。A4 排版，一键导出 Word / PDF。">
+<meta property="og:description" content="数学口算与语文分层练习卷已上线，英语建设中。A4 排版，一键打印或存 PDF。">
 <meta property="og:url" content="https://quietdw.github.io/primary-worksheet/">
 <meta property="og:image" content="https://quietdw.github.io/primary-worksheet/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="小学练习题生成器 - 数学、语文、英语练习卷在线生成">
-<meta name="twitter:description" content="数学口算练习卷已上线，语文与英语建设中。A4 排版，一键导出 Word / PDF。">
+<meta name="twitter:description" content="数学口算与语文分层练习卷已上线，英语建设中。A4 排版，一键打印或存 PDF。">
 <meta name="twitter:image" content="https://quietdw.github.io/primary-worksheet/og-image.png">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -49,7 +49,7 @@
       "name": "小学练习题生成器",
       "alternateName": "Primary Worksheet",
       "url": "https://quietdw.github.io/primary-worksheet/",
-      "description": "小学练习卷在线生成，数学口算已上线，语文与英语建设中。",
+      "description": "小学练习卷在线生成，数学口算与语文分层练习已上线，英语建设中。",
       "inLanguage": "zh-CN",
       "isAccessibleForFree": true
     },
@@ -136,7 +136,7 @@
 <main>
   <div class="home">
     <h1 data-shell="homeTitle">小学练习题生成器</h1>
-    <p class="home-lead" data-shell="homeLead">选一个学科出卷，数学口算已上线，语文与英语正在建设。</p>
+    <p class="home-lead" data-shell="homeLead">选一个学科出卷，数学与语文已上线，英语正在建设。</p>
 
     <div class="cards">
 
@@ -155,19 +155,18 @@
         <span class="go" data-shell="mathGo">生成计算题 →</span>
       </a>
 
-      <a class="card pending" data-subject="chinese" href="chinese-practice-generator.html">
+      <a class="card" data-subject="chinese" href="chinese-practice-generator.html">
         <div class="card-head">
           <h2 data-shell="chineseName">语文</h2>
-          <span class="tag" data-shell="pending">建设中</span>
         </div>
-        <p data-shell="chineseDesc">字词与拼音练习卷，题型规划中，页面先占位。</p>
+        <p data-shell="chineseDesc">字词与拼音练习卷，按年级与星级出题，可直接打印。</p>
         <ul>
           <li data-shell="chineseF1">看拼音写词语</li>
           <li data-shell="chineseF2">生字注音</li>
-          <li data-shell="chineseF3">组词</li>
-          <li data-shell="chineseF4">近反义词</li>
+          <li data-shell="chineseF3">同音字选字</li>
+          <li data-shell="chineseF4">组词</li>
         </ul>
-        <span class="go" data-shell="chineseGo">查看进度 →</span>
+        <span class="go" data-shell="chineseGo">生成语文练习卷 →</span>
       </a>
 
       <a class="card pending" data-subject="english" href="english-practice-generator.html">
@@ -196,16 +195,16 @@
 window.SiteShell && SiteShell.extendI18N({
   zh: {
     homeTitle: '小学练习题生成器',
-    homeLead: '选一个学科出卷，数学口算已上线，语文与英语正在建设。',
+    homeLead: '选一个学科出卷，数学与语文已上线，英语正在建设。',
     mathName: '数学',
     liveTag: '已上线',
     mathDesc: '口算与混合运算练习卷，按 A4 排版，直接打印或导出。',
     mathF1: '加减乘除', mathF2: '2–4 个数字', mathF3: '整数 / 小数', mathF4: '负数限制',
     mathGo: '生成计算题 →',
     chineseName: '语文',
-    chineseDesc: '字词与拼音练习卷，题型规划中，页面先占位。',
-    chineseF1: '看拼音写词语', chineseF2: '生字注音', chineseF3: '组词', chineseF4: '近反义词',
-    chineseGo: '查看进度 →',
+    chineseDesc: '字词与拼音练习卷，按年级与星级出题，可直接打印。',
+    chineseF1: '看拼音写词语', chineseF2: '生字注音', chineseF3: '同音字选字', chineseF4: '组词',
+    chineseGo: '生成语文练习卷 →',
     englishName: '英语',
     englishDesc: '单词默写与互译练习卷，题型规划中，页面先占位。',
     englishF1: '单词默写', englishF2: '中英互译', englishF3: '选词填空',
@@ -213,16 +212,16 @@ window.SiteShell && SiteShell.extendI18N({
   },
   en: {
     homeTitle: 'Primary Worksheet',
-    homeLead: 'Pick a subject to build a worksheet. Math is live; Chinese and English are on the way.',
+    homeLead: 'Pick a subject to build a worksheet. Math and Chinese are live; English is on the way.',
     mathName: 'Math',
     liveTag: 'Live',
     mathDesc: 'Arithmetic and mixed-operation drills, A4 layout, print or export.',
     mathF1: 'Add / sub / mul / div', mathF2: '2–4 terms', mathF3: 'Integers / decimals', mathF4: 'No negatives',
     mathGo: 'Generate problems →',
     chineseName: 'Chinese',
-    chineseDesc: 'Pinyin and vocabulary drills — types still being planned.',
-    chineseF1: 'Pinyin to words', chineseF2: 'Character pinyin', chineseF3: 'Word building', chineseF4: 'Synonyms / antonyms',
-    chineseGo: 'See progress →',
+    chineseDesc: 'Pinyin and vocabulary drills, graded by level and difficulty.',
+    chineseF1: 'Pinyin to words', chineseF2: 'Character pinyin', chineseF3: 'Homophone choice', chineseF4: 'Word building',
+    chineseGo: 'Open Chinese worksheets →',
     englishName: 'English',
     englishDesc: 'Spelling and translation drills — types still being planned.',
     englishF1: 'Word dictation', englishF2: 'CN ↔ EN translation', englishF3: 'Fill in the blanks',

@@ -110,6 +110,7 @@
 }
 </script>
 <link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/worksheet.css">
 <style>
   /* 配色与字体的公共变量由 assets/site.css 提供，这里只保留练习卷预览相关的变量 */
   :root{
@@ -130,47 +131,17 @@
     --float-bg:rgba(22,26,33,.95);
     --dot:#1b212a;
   }
-  html,body{height:100%}
-  .app{
-    flex:1 1 auto;
-    min-height:0;
-    display:grid;
-    grid-template-columns:minmax(0,1fr) 372px;
-    gap:14px;
-    padding:14px;
-  }
-
+  /* 布局骨架（.app / .preview / .panel / 缩放条 / 窄屏顺序）由 assets/worksheet.css 提供 */
   /* ---------- 左侧预览 ---------- */
   .preview{
-    position:relative;
-    overflow:auto;
-    background:var(--preview-bg);
-    border-radius:6px;
     padding:12px 18px 18px;
     scroll-behavior:auto;
   }
-  .zoom-bar{
-    position:sticky;
-    top:0;
-    z-index:6;
-    display:flex;
-    align-items:flex-start;
-    justify-content:space-between;
-    gap:12px;
-    margin:-4px 0 8px;
-    pointer-events:none;
-  }
   .sheet-title{
-    pointer-events:auto;
     display:flex;
     align-items:center;
     gap:8px;
-    min-width:0;
     padding:3px 6px 3px 5px;
-    background:var(--float-bg);
-    border:1px solid var(--line);
-    border-radius:6px;
-    box-shadow:var(--float-shadow);
   }
   .sheet-title .title-text{min-width:0}
   .sheet-title h1{
@@ -189,51 +160,6 @@
     line-height:1.4;
     color:var(--muted);
   }
-  .zoom-inner{flex:0 0 auto}
-  .zoom-inner{
-    display:flex;
-    align-items:center;
-    gap:2px;
-    padding:3px;
-    pointer-events:auto;
-    background:var(--float-bg);
-    border:1px solid var(--line);
-    border-radius:6px;
-    box-shadow:var(--float-shadow);
-  }
-  .zoom-btn{
-    appearance:none;
-    border:0;
-    background:transparent;
-    color:var(--text);
-    font:inherit;
-    font-size:14px;
-    line-height:1;
-    width:26px;
-    height:24px;
-    border-radius:4px;
-    cursor:pointer;
-  }
-  .zoom-btn:hover{background:var(--hover)}
-  .zoom-btn.wide{width:auto;padding:0 8px;font-size:12px;color:var(--muted)}
-  .zoom-btn.wide:hover{color:var(--accent)}
-  .zoom-val{
-    appearance:none;
-    border:0;
-    background:transparent;
-    color:var(--muted);
-    font:inherit;
-    font-size:12px;
-    min-width:46px;
-    height:24px;
-    border-radius:4px;
-    cursor:pointer;
-    font-variant-numeric:tabular-nums;
-  }
-  .zoom-val:hover{background:var(--hover);color:var(--accent)}
-  .zoom-sep{width:1px;height:16px;background:var(--line);margin:0 3px}
-
-  .paper-wrap{display:flex;justify-content:center}
   #paper{
     --qfs:16px;
     --cols:4;
@@ -317,15 +243,6 @@
   }
 
   /* ---------- 右侧参数面板 ---------- */
-  .panel{
-    display:flex;
-    flex-direction:column;
-    background:var(--panel);
-    border:1px solid var(--line);
-    border-radius:6px;
-    overflow:hidden;
-    min-height:0;
-  }
   .panel-head{
     display:flex;
     align-items:center;
@@ -349,7 +266,7 @@
   }
   .link-btn:hover{color:var(--accent);background:var(--accent-soft)}
   .panel-tools{display:flex;align-items:center;gap:8px}
-  .panel-scroll{flex:1;overflow-y:auto;padding:0 14px 6px}
+  .panel-scroll{padding:0 14px 6px}
   .group-title{
     display:flex;
     align-items:center;
@@ -411,6 +328,21 @@
     background:var(--surface);
   }
   input[type=number]:focus{outline:2px solid var(--accent-soft);border-color:var(--accent)}
+  #seedInput{
+    flex:1 1 auto;
+    width:auto;
+    min-width:0;
+    padding:4px 7px;
+    font:inherit;
+    font-family:Consolas,Monaco,monospace;
+    font-size:12.5px;
+    color:var(--text);
+    border:1px solid var(--line-strong);
+    border-radius:4px;
+    background:var(--surface);
+  }
+  #seedInput:focus{outline:2px solid var(--accent-soft);border-color:var(--accent)}
+  .row .link-btn{flex:0 0 auto;white-space:nowrap}
   .hint{
     margin:5px 0 0;
     font-size:11.5px;
@@ -482,14 +414,6 @@
   .menu button:hover{background:var(--hover)}
   .menu .sep{height:1px;background:var(--line-soft);margin:4px 2px}
 
-  @media (max-width:1080px){
-    .app{grid-template-columns:1fr}
-    .preview{max-height:70vh;order:2}
-    .panel{order:1}
-    .paper-wrap{justify-content:flex-start}
-    .panel-scroll,.panel-foot{width:100%;max-width:720px;margin-left:auto;margin-right:auto}
-  }
-
   @media (max-width:720px){
     .sheet-title p{display:none}
     .sheet-title h1{font-size:12px}
@@ -559,11 +483,7 @@
   @page{size:A4;margin:10mm}
   @media print{
     body{background:#fff}
-    .app{display:block;height:auto;padding:0}
-    .panel,.zoom-bar{display:none}
-    .preview{overflow:visible;background:#fff;padding:0;border-radius:0}
     #paper{zoom:1 !important;width:auto;gap:0}
-    .paper-wrap{display:block}
     .page{
       width:auto;
       height:277mm;
@@ -712,6 +632,23 @@
         </div>
       </div>
 
+      <div class="field">
+        <div class="field-head">
+          <span class="label-tip">
+            <span class="field-label" data-i18n="seed">种子</span>
+            <span class="tip" tabindex="0" aria-describedby="mathSeedTip">
+              <span aria-hidden="true">?</span>
+              <span class="tip-body" id="mathSeedTip" role="tooltip" data-i18n="seedTip">同一个种子配合同一组参数，每次生成的题目与顺序完全相同；复制种子即可复现整张卷子。</span>
+            </span>
+          </span>
+        </div>
+        <div class="row">
+          <input type="text" id="seedInput" value="" maxlength="32" autocomplete="off" spellcheck="false" data-i18n-aria="seedAria" aria-label="随机种子">
+          <button type="button" class="link-btn" id="seedRandom" data-i18n="seedRandom">换一个</button>
+          <button type="button" class="link-btn" id="seedCopy" data-i18n="seedCopy">复制</button>
+        </div>
+      </div>
+
       <div class="group-title" data-i18n="groupLayout">排版与显示</div>
 
       <div class="prow">
@@ -802,6 +739,7 @@
     resMax: null,
     noNeg: true,
     count: 50,
+    seed: '',
     cols: 4,
     rows: 25,
     fontSize: 16,
@@ -881,6 +819,13 @@
       count: '题目数量',
       countCustom: '自定义 1–2000',
       countAria: '题目数量',
+      seed: '种子',
+      seedAria: '随机种子',
+      seedTip: '同一个种子配合同一组参数，每次生成的题目和顺序都完全相同；复制种子即可复现整张卷子。',
+      seedRandom: '换一个',
+      seedCopy: '复制',
+      seedCopied: '种子已复制',
+      seedFail: '复制失败，请手动选中',
       cols: '每行题数',
       cols2: '2 列',
       cols3: '3 列',
@@ -987,6 +932,13 @@
       count: 'Problems',
       countCustom: 'Custom 1–2000',
       countAria: 'Number of problems',
+      seed: 'Seed',
+      seedAria: 'Random seed',
+      seedTip: 'The same seed with the same settings always produces the same problems in the same order. Copy it to reproduce this worksheet later.',
+      seedRandom: 'New',
+      seedCopy: 'Copy',
+      seedCopied: 'Seed copied',
+      seedFail: 'Copy failed, select it manually',
       cols: 'Columns',
       cols2: '2',
       cols3: '3',
@@ -1051,6 +1003,8 @@
   var genTimer = null;
   var saveTimer = null;
   var divCache = new Map();
+  // 出题使用的随机源：每次 generate() 按 cfg.seed 重建，保证同种子同配置可复现
+  var rand = Math.random;
 
   var previewEl = $('#preview');
   var paperEl = $('#paper');
@@ -1060,6 +1014,7 @@
   var exportMenu = $('#exportMenu');
   var dpField = $('#dpField');
   var zoomVal = $('#zoomVal');
+  var seedInput = $('#seedInput');
   var rangePresets = $('#rangePresets');
   var countPresets = $('#countPresets');
 
@@ -1182,8 +1137,33 @@
     return out;
   }
 
+  function hashSeed(str) {
+    var h = 2166136261;
+    for (var i = 0; i < str.length; i++) {
+      h ^= str.charCodeAt(i);
+      h = Math.imul(h, 16777619);
+    }
+    return h >>> 0;
+  }
+
+  // mulberry32：同一种子得到同一串随机数，用于复现整张卷子
+  function makeRng(seed) {
+    var a = hashSeed(String(seed == null ? '' : seed));
+    return function () {
+      a = (a + 0x6D2B79F5) >>> 0;
+      var t = a;
+      t = Math.imul(t ^ (t >>> 15), t | 1);
+      t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  function randomSeed() {
+    return String(Math.floor(Math.random() * 900000) + 100000);
+  }
+
   function rndInt(a, b) {
-    return a + Math.floor(Math.random() * (b - a + 1));
+    return a + Math.floor(rand() * (b - a + 1));
   }
 
   function roundTo(v, d) {
@@ -1219,7 +1199,7 @@
 
   function randNum(lo, hi) {
     if (cfg.numType === 'int') return rndInt(Math.ceil(lo), Math.floor(hi));
-    return roundTo(lo + Math.random() * (hi - lo), cfg.dp);
+    return roundTo(lo + rand() * (hi - lo), cfg.dp);
   }
 
   function fmtNum(v) {
@@ -1413,6 +1393,7 @@
     var list = [];
     var misses = 0;
 
+    rand = makeRng(cfg.seed);
     divCache.clear();
 
     while (list.length < total) {
@@ -1615,6 +1596,8 @@
     cfg.resMax = cfg.resMax === null || cfg.resMax === undefined || cfg.resMax === '' ? null : Number(cfg.resMax);
     if (cfg.resMin !== null && !isFinite(cfg.resMin)) cfg.resMin = null;
     if (cfg.resMax !== null && !isFinite(cfg.resMax)) cfg.resMax = null;
+    cfg.seed = String(cfg.seed == null ? '' : cfg.seed).trim().slice(0, 32);
+    if (!cfg.seed) cfg.seed = randomSeed();
   }
 
   /* ---------------- 参数与界面同步 ---------------- */
@@ -1666,6 +1649,7 @@
       var val = cfg[input.attr('data-key')];
       input.val(val === null ? '' : String(val));
     });
+    seedInput.val(cfg.seed);
     syncDpField();
     syncRangeStep();
     syncPresets();
@@ -1737,6 +1721,53 @@
     generate();
   });
 
+  seedInput.on('input', function () {
+    var next = seedInput.val().trim();
+    cfg.seed = next;
+    saveCfg();
+    if (next) scheduleGenerate(360);
+  });
+
+  seedInput.on('blur', function () {
+    if (cfg.seed) return;
+    cfg.seed = randomSeed();
+    seedInput.val(cfg.seed);
+    saveCfg();
+    clearTimeout(genTimer);
+    generate();
+  });
+
+  seedInput.on('keydown', function (e) {
+    if (e.key !== 'Enter') return;
+    seedInput[0].blur();
+    clearTimeout(genTimer);
+    generate();
+  });
+
+  $('#seedRandom').on('click', function () {
+    cfg.seed = randomSeed();
+    seedInput.val(cfg.seed);
+    saveCfg();
+    clearTimeout(genTimer);
+    generate();
+  });
+
+  $('#seedCopy').on('click', function () {
+    var done = function (ok) {
+      statusEl.text(t(ok ? 'seedCopied' : 'seedFail')).toggleClass('warn', !ok);
+    };
+    if (window.navigator.clipboard && window.navigator.clipboard.writeText) {
+      window.navigator.clipboard.writeText(cfg.seed).then(function () {
+        done(true);
+      }, function () {
+        done(false);
+      });
+    } else {
+      seedInput[0].select();
+      done(false);
+    }
+  });
+
   $('input[data-key]').each(function () {
     var input = $(this);
     var key = input.attr('data-key');
@@ -1785,14 +1816,17 @@
 
   regenBtn.on('click', function () {
     clearTimeout(genTimer);
+    // 「换一批」换的是种子，否则同种子会生成同一份卷子
+    cfg.seed = randomSeed();
+    seedInput.val(cfg.seed);
+    saveCfg();
     generate();
   });
 
   $('#resetBtn').on('click', function () {
     cfg = clone(DEFAULTS);
-    try {
-      localStorage.removeItem(STORE_KEY);
-    } catch (e) { /* 忽略 */ }
+    cfg.seed = randomSeed();
+    saveCfg();
     syncAllChips();
     clearTimeout(genTimer);
     generate();
@@ -2193,6 +2227,7 @@
   /* ---------------- 启动 ---------------- */
 
   loadCfg();
+  if (!cfg.seed) cfg.seed = randomSeed();
   syncAllChips();
   applyLang(detectLang(), true);
   generate();

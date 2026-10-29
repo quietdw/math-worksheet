@@ -3,17 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>语文练习卷生成器（建设中） - 小学练习题生成器</title>
-<meta name="description" content="语文练习卷生成功能正在建设中，规划题型包括看拼音写词语、生字注音、组词与近反义词。">
-<meta name="robots" content="noindex,follow">
+<title>语文练习卷生成器 - 小学语文看拼音写词语 / 注音 / 组词练习，按难度出题</title>
+<meta name="description" content="免费在线生成小学语文练习卷：按年级与星级出题，包含看拼音写词语、生字注音、同音字选字、组词，支持答案卷、A4 打印或另存 PDF，全部在浏览器本地生成。">
+<meta name="keywords" content="语文练习卷,看拼音写词语,生字注音,同音字,组词,小学语文,语文练习题,分层练习,打印练习卷,chinese worksheet,pinyin worksheet">
+<meta name="author" content="quietdw">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
 <meta name="theme-color" content="#2563eb">
-<meta name="format-detection" content="telephone=no">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="小学练习题生成器">
-<meta property="og:title" content="语文练习卷生成器（建设中）">
-<meta property="og:description" content="看拼音写词语、生字注音、组词与近反义词等题型规划中。">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <script>
 (function () {
   try {
@@ -24,100 +19,232 @@
   } catch (e) { /* 忽略 */ }
 })();
 </script>
+<meta name="format-detection" content="telephone=no">
+<link rel="canonical" href="https://quietdw.github.io/primary-worksheet/chinese-practice-generator.html">
+<link rel="alternate" hreflang="zh-CN" href="https://quietdw.github.io/primary-worksheet/chinese-practice-generator.html">
+<link rel="alternate" hreflang="en" href="https://quietdw.github.io/primary-worksheet/chinese-practice-generator.html?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://quietdw.github.io/primary-worksheet/chinese-practice-generator.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="小学练习题生成器">
+<meta property="og:title" content="语文练习卷生成器 - 按年级与难度出题">
+<meta property="og:description" content="看拼音写词语、生字注音、同音字选字、组词；按年级与星级出题，A4 排版一键打印或存 PDF。">
+<meta property="og:url" content="https://quietdw.github.io/primary-worksheet/chinese-practice-generator.html">
+<meta property="og:image" content="https://quietdw.github.io/primary-worksheet/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="语文练习卷生成器界面预览">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="语文练习卷生成器 - 按年级与难度出题">
+<meta name="twitter:description" content="看拼音写词语、生字注音、同音字选字、组词；按年级与星级出题，A4 排版一键打印或存 PDF。">
+<meta name="twitter:image" content="https://quietdw.github.io/primary-worksheet/og-image.png">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "语文练习卷生成器",
+  "alternateName": "Chinese Worksheet Generator",
+  "url": "https://quietdw.github.io/primary-worksheet/chinese-practice-generator.html",
+  "description": "按年级与难度星级生成小学语文练习卷，包含看拼音写词语、生字注音、同音字选字与组词，支持答案卷与 A4 打印。",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript. Chrome, Edge, Firefox or Safari.",
+  "inLanguage": ["zh-CN", "en"],
+  "isAccessibleForFree": true,
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "CNY" }
+}
+</script>
 <link rel="stylesheet" href="assets/site.css">
-<style>
-  main{flex:1 1 auto;display:flex;align-items:center;justify-content:center;padding:32px 20px}
-  .sheet{
-    width:100%;
-    max-width:520px;
-    padding:26px 28px 22px;
-    background:var(--panel);
-    border:1px solid var(--line);
-    border-radius:10px;
-    box-shadow:0 1px 2px rgba(16,24,40,.06),0 8px 24px rgba(16,24,40,.04);
-  }
-  .head{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-  h1{margin:0;font-size:20px;font-weight:700}
-  .tag{
-    padding:1px 8px;
-    border-radius:999px;
-    background:var(--accent-soft);
-    color:var(--accent);
-    font-size:11.5px;
-    line-height:1.8;
-  }
-  .lead{margin:10px 0 18px;color:var(--muted);font-size:13px;line-height:1.7}
-  h2{margin:0 0 8px;font-size:13px;font-weight:600}
-  ul{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px}
-  li{padding:4px 10px;border:1px solid var(--line);border-radius:5px;font-size:12.5px}
-  .note{
-    margin:18px 0 0;
-    padding-top:14px;
-    border-top:1px solid var(--line);
-    color:var(--muted);
-    font-size:12.5px;
-    line-height:1.8;
-  }
-  .note a{color:var(--accent);text-decoration:none}
-  .note a:hover{text-decoration:underline}
-</style>
+<link rel="stylesheet" href="assets/worksheet.css">
+<link rel="stylesheet" href="assets/cn/cn.css">
 </head>
 <body data-page="chinese">
 <div id="site-header"></div>
 
-<main>
-  <div class="sheet">
-    <div class="head">
-      <h1 data-shell="chinesePageTitle">语文练习卷</h1>
-      <span class="tag" data-shell="pending">建设中</span>
+<noscript>
+  <div class="noscript-note">
+    <h1>语文练习卷生成器</h1>
+    <p>本工具需要启用 JavaScript 才能生成题目。开启后可按年级与难度星级生成看拼音写词语、生字注音、同音字选字与组词练习，并在浏览器中排版打印。</p>
+  </div>
+</noscript>
+
+<div class="app">
+  <main class="preview" id="preview">
+    <div class="zoom-bar">
+      <div class="sheet-title">
+        <h1 data-shell="cnAppTitle">语文练习卷生成器</h1>
+        <p data-shell="cnAppSubtitle">按年级与星级出题 · 看拼音写词语 / 注音 / 选字 / 组词</p>
+      </div>
+      <div class="zoom-inner">
+        <button type="button" class="zoom-btn" id="zoomOut" aria-label="缩小">−</button>
+        <button type="button" class="zoom-val" id="zoomVal" aria-label="重置缩放">100%</button>
+        <button type="button" class="zoom-btn" id="zoomIn" aria-label="放大">+</button>
+        <span class="zoom-sep"></span>
+        <button type="button" class="zoom-btn wide" id="zoomFit">适应宽度</button>
+      </div>
+    </div>
+    <div class="paper-wrap">
+      <div id="paper"></div>
+    </div>
+  </main>
+
+  <aside class="panel">
+    <div class="panel-head">
+      <span data-shell="cnPanelTitle">参数设置</span>
+      <button type="button" class="link-btn" id="resetBtn" data-shell="cnReset">重置</button>
     </div>
 
-    <p class="lead" data-shell="chineseLead">语文题型还在规划，暂时不能生成练习卷。上线后的题型方向：</p>
+    <div class="panel-scroll">
+      <div class="group-title" data-shell="cnGroupContent">题目内容</div>
 
-    <h2 data-shell="plannedTypes">规划题型</h2>
-    <ul>
-      <li data-shell="chineseT1">看拼音写词语</li>
-      <li data-shell="chineseT2">看词语写拼音</li>
-      <li data-shell="chineseT3">生字注音</li>
-      <li data-shell="chineseT4">组词</li>
-      <li data-shell="chineseT5">近义词 / 反义词</li>
-    </ul>
+      <div class="field">
+        <div class="field-label" data-shell="cnGrades">年级</div>
+        <div class="chips">
+          <button type="button" class="chip" data-key="grades" data-value="1" data-multi="true" data-shell="g1">一年级</button>
+          <button type="button" class="chip" data-key="grades" data-value="2" data-multi="true" data-shell="g2">二年级</button>
+          <button type="button" class="chip" data-key="grades" data-value="3" data-multi="true" data-shell="g3">三年级</button>
+          <button type="button" class="chip" data-key="grades" data-value="4" data-multi="true" data-shell="g4">四年级</button>
+          <button type="button" class="chip" data-key="grades" data-value="5" data-multi="true" data-shell="g5">五年级</button>
+          <button type="button" class="chip" data-key="grades" data-value="6" data-multi="true" data-shell="g6">六年级</button>
+        </div>
+      </div>
 
-    <p class="note"><span data-shell="chineseNoteLead">数学练习卷已可用：</span><a href="math-practice-generator.html" data-shell="goMath">前往数学练习卷生成器</a></p>
-  </div>
-</main>
+      <div class="field">
+        <div class="field-label" data-shell="cnTypes">题型</div>
+        <div class="chips">
+          <button type="button" class="chip" data-key="types" data-value="pinyin2word" data-multi="true" data-shell="cnTypePinyin2word">看拼音写词语</button>
+          <button type="button" class="chip" data-key="types" data-value="char2pinyin" data-multi="true" data-shell="cnTypeChar2pinyin">生字注音</button>
+          <button type="button" class="chip" data-key="types" data-value="homophone" data-multi="true" data-shell="cnTypeHomophone">同音字选字</button>
+          <button type="button" class="chip" data-key="types" data-value="wordBuild" data-multi="true" data-shell="cnTypeWordBuild">组词</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-head">
+          <span class="field-label" data-shell="cnCount">题目数量</span>
+          <div class="chips" id="countPresets">
+            <button type="button" class="chip mini" data-count="20">20</button>
+            <button type="button" class="chip mini" data-count="50">50</button>
+            <button type="button" class="chip mini" data-count="100">100</button>
+          </div>
+        </div>
+        <div class="inline">
+          <input type="number" id="countInput" min="1" max="200" step="1" value="20" aria-label="题目数量">
+          <span class="hint" data-shell="cnCountHint">1–200</span>
+        </div>
+      </div>
+
+      <div class="group-title" data-shell="cnGroupLevel">难度</div>
+
+      <div class="field">
+        <div class="field-head">
+          <span class="field-label" data-shell="cnStars">星级</span>
+          <span class="hint" data-shell="cnStarsHint">★1 最易，★3 最难</span>
+        </div>
+        <div class="chips">
+          <button type="button" class="chip" data-key="stars" data-value="1" data-multi="true">★1</button>
+          <button type="button" class="chip" data-key="stars" data-value="2" data-multi="true">★2</button>
+          <button type="button" class="chip" data-key="stars" data-value="3" data-multi="true">★3</button>
+          <button type="button" class="chip" data-value="4" data-disabled="true" title="P2 上线">★4</button>
+          <button type="button" class="chip" data-value="5" data-disabled="true" title="P2 上线">★5</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-label" data-shell="cnCurve">难度曲线</div>
+        <div class="chips">
+          <button type="button" class="chip" data-key="curve" data-value="asc" data-shell="cnCurveAsc">递增</button>
+          <button type="button" class="chip" data-key="curve" data-value="even" data-shell="cnCurveEven">均衡</button>
+          <button type="button" class="chip" data-key="curve" data-value="mixed" data-shell="cnCurveMixed">混合</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-head">
+          <span class="label-tip">
+            <span class="field-label" data-shell="cnSeed">种子</span>
+            <span class="tip" tabindex="0" aria-describedby="cnSeedTip">
+              <span aria-hidden="true">?</span>
+              <span class="tip-body" id="cnSeedTip" role="tooltip" data-shell="cnSeedTip">同一个种子配合同一组参数，每次生成的题目与顺序完全相同；复制种子即可复现整张卷子。</span>
+            </span>
+          </span>
+        </div>
+        <div class="row">
+          <input type="text" id="seedInput" value="20261029" aria-label="随机种子">
+          <button type="button" class="link-btn" id="seedRandom" data-shell="cnSeedRandom">换一个</button>
+          <button type="button" class="link-btn" id="seedCopy" data-shell="cnSeedCopy">复制</button>
+        </div>
+      </div>
+
+      <div class="group-title" data-shell="cnGroupLayout">排版与显示</div>
+
+      <div class="prow">
+        <div class="field">
+          <div class="field-label" data-shell="cnCols">每行题数</div>
+          <div class="chips">
+            <button type="button" class="chip" data-key="cols" data-value="1">1</button>
+            <button type="button" class="chip" data-key="cols" data-value="2">2</button>
+            <button type="button" class="chip" data-key="cols" data-value="3">3</button>
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label" data-shell="cnRows">每页行数</div>
+          <div class="chips">
+            <button type="button" class="chip" data-key="rows" data-value="6">6</button>
+            <button type="button" class="chip" data-key="rows" data-value="8">8</button>
+            <button type="button" class="chip" data-key="rows" data-value="10">10</button>
+            <button type="button" class="chip" data-key="rows" data-value="12">12</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="prow">
+        <div class="field">
+          <div class="field-label" data-shell="cnFont">字号</div>
+          <div class="chips">
+            <button type="button" class="chip" data-key="fontSize" data-value="14">14</button>
+            <button type="button" class="chip" data-key="fontSize" data-value="16">16</button>
+            <button type="button" class="chip" data-key="fontSize" data-value="18">18</button>
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label" data-shell="cnHeader">表头</div>
+          <div class="chips">
+            <button type="button" class="chip" data-key="header" data-value="true" data-shell="cnOn">显示</button>
+            <button type="button" class="chip" data-key="header" data-value="false" data-shell="cnOff">隐藏</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-label" data-shell="cnAnswers">答案卷</div>
+        <div class="chips">
+          <button type="button" class="chip" data-key="answers" data-value="true" data-shell="cnOn">显示</button>
+          <button type="button" class="chip" data-key="answers" data-value="false" data-shell="cnOff">隐藏</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-foot">
+      <div class="status" id="status"></div>
+      <button type="button" class="primary-btn" id="printBtn" data-shell="cnPrint">打印 / 存 PDF</button>
+    </div>
+  </aside>
+</div>
 
 <div id="site-footer"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="assets/site-shell.js"></script>
-<script>
-window.SiteShell && SiteShell.extendI18N({
-  zh: {
-    chinesePageTitle: '语文练习卷',
-    chineseLead: '语文题型还在规划，暂时不能生成练习卷。上线后的题型方向：',
-    plannedTypes: '规划题型',
-    chineseT1: '看拼音写词语',
-    chineseT2: '看词语写拼音',
-    chineseT3: '生字注音',
-    chineseT4: '组词',
-    chineseT5: '近义词 / 反义词',
-    chineseNoteLead: '数学练习卷已可用：',
-    goMath: '前往数学练习卷生成器'
-  },
-  en: {
-    chinesePageTitle: 'Chinese worksheets',
-    chineseLead: 'Chinese worksheet types are still being planned. Planned drills:',
-    plannedTypes: 'Planned types',
-    chineseT1: 'Pinyin to words',
-    chineseT2: 'Words to pinyin',
-    chineseT3: 'Character pinyin',
-    chineseT4: 'Word building',
-    chineseT5: 'Synonyms / antonyms',
-    chineseNoteLead: 'Math worksheets are ready: ',
-    goMath: 'open the math generator'
-  }
-});
-</script>
+<script src="assets/cn/bank.js"></script>
+<script src="assets/cn/core.js"></script>
+<script src="assets/cn/types.js"></script>
+<script src="assets/cn/engine.js"></script>
+<script src="assets/cn/paper.js"></script>
+<script src="assets/cn/app.js"></script>
+<script src="assets/cn/selftest.js"></script>
 </body>
 </html>
