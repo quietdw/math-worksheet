@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://quietdw.github.io/math-worksheet/sitemap.xml
+Sitemap: https://quietdw.github.io/primary-worksheet/sitemap.xml

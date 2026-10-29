@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>语文练习卷生成器（建设中） - 小学练习题生成器</title>
+<meta name="description" content="语文练习卷生成功能正在建设中，规划题型包括看拼音写词语、生字注音、组词与近反义词。">
+<meta name="robots" content="noindex,follow">
+<meta name="theme-color" content="#2563eb">
+<meta name="format-detection" content="telephone=no">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="小学练习题生成器">
+<meta property="og:title" content="语文练习卷生成器（建设中）">
+<meta property="og:description" content="看拼音写词语、生字注音、组词与近反义词等题型规划中。">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('mathgen.theme.v1');
+    var dark = saved ? saved === 'dark' :
+      !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    if (dark) document.documentElement.dataset.theme = 'dark';
+  } catch (e) { /* 忽略 */ }
+})();
+</script>
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  main{flex:1 1 auto;display:flex;align-items:center;justify-content:center;padding:32px 20px}
+  .sheet{
+    width:100%;
+    max-width:520px;
+    padding:26px 28px 22px;
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:10px;
+    box-shadow:0 1px 2px rgba(16,24,40,.06),0 8px 24px rgba(16,24,40,.04);
+  }
+  .head{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  h1{margin:0;font-size:20px;font-weight:700}
+  .tag{
+    padding:1px 8px;
+    border-radius:999px;
+    background:var(--accent-soft);
+    color:var(--accent);
+    font-size:11.5px;
+    line-height:1.8;
+  }
+  .lead{margin:10px 0 18px;color:var(--muted);font-size:13px;line-height:1.7}
+  h2{margin:0 0 8px;font-size:13px;font-weight:600}
+  ul{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+  li{padding:4px 10px;border:1px solid var(--line);border-radius:5px;font-size:12.5px}
+  .note{
+    margin:18px 0 0;
+    padding-top:14px;
+    border-top:1px solid var(--line);
+    color:var(--muted);
+    font-size:12.5px;
+    line-height:1.8;
+  }
+  .note a{color:var(--accent);text-decoration:none}
+  .note a:hover{text-decoration:underline}
+</style>
+</head>
+<body data-page="chinese">
+<div id="site-header"></div>
+
+<main>
+  <div class="sheet">
+    <div class="head">
+      <h1 data-shell="chinesePageTitle">语文练习卷</h1>
+      <span class="tag" data-shell="pending">建设中</span>
+    </div>
+
+    <p class="lead" data-shell="chineseLead">语文题型还在规划，暂时不能生成练习卷。上线后的题型方向：</p>
+
+    <h2 data-shell="plannedTypes">规划题型</h2>
+    <ul>
+      <li data-shell="chineseT1">看拼音写词语</li>
+      <li data-shell="chineseT2">看词语写拼音</li>
+      <li data-shell="chineseT3">生字注音</li>
+      <li data-shell="chineseT4">组词</li>
+      <li data-shell="chineseT5">近义词 / 反义词</li>
+    </ul>
+
+    <p class="note"><span data-shell="chineseNoteLead">数学练习卷已可用：</span><a href="math-practice-generator.html" data-shell="goMath">前往数学练习卷生成器</a></p>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="assets/site-shell.js"></script>
+<script>
+window.SiteShell && SiteShell.extendI18N({
+  zh: {
+    chinesePageTitle: '语文练习卷',
+    chineseLead: '语文题型还在规划，暂时不能生成练习卷。上线后的题型方向：',
+    plannedTypes: '规划题型',
+    chineseT1: '看拼音写词语',
+    chineseT2: '看词语写拼音',
+    chineseT3: '生字注音',
+    chineseT4: '组词',
+    chineseT5: '近义词 / 反义词',
+    chineseNoteLead: '数学练习卷已可用：',
+    goMath: '前往数学练习卷生成器'
+  },
+  en: {
+    chinesePageTitle: 'Chinese worksheets',
+    chineseLead: 'Chinese worksheet types are still being planned. Planned drills:',
+    plannedTypes: 'Planned types',
+    chineseT1: 'Pinyin to words',
+    chineseT2: 'Words to pinyin',
+    chineseT3: 'Character pinyin',
+    chineseT4: 'Word building',
+    chineseT5: 'Synonyms / antonyms',
+    chineseNoteLead: 'Math worksheets are ready: ',
+    goMath: 'open the math generator'
+  }
+});
+</script>
+</body>
+</html>
